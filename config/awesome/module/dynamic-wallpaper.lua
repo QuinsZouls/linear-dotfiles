@@ -12,7 +12,7 @@
 -- It checks the difference between the current time and the next scheduled time
 -- Then convert it to seconds to set it as a timeout value
 
--- Limitations: 
+-- Limitations:
 -- Timeout paused when laptop/pc is suspended or in sleep mode, and there's probably some bugs too so whatever
 local awful = require('awful')
 local gears = require('gears')
@@ -38,7 +38,7 @@ local wall_config = {
 	-- Table mapping schedule to wallpaper filename
 	wallpaper_schedule = config.module.dynamic_wallpaper.wallpaper_schedule or {
 		['00:00:00'] = 'midnight-wallpaper.jpg',
-		['06:22:00'] = 'morning-wallpaper.jpg',
+		['06:22:00'] = 'morning-wallpaper.png',
 		['12:00:00'] = 'noon-wallpaper.jpg',
 		['17:58:00'] = 'night-wallpaper.jpg'
 	},
@@ -216,7 +216,7 @@ if #wall_config.wallpaper_schedule == 0 then
 		-- Get any pictures that match keywords
 		local pictures = filter_files_by_format(get_dir_contents(wall_config.wall_dir), wall_config.valid_picture_formats)
 		pictures = find_files_containing_keywords(pictures, keywords)
-		
+
 		-- Replace keywords with files
 		for index, time in ipairs(ordered_times) do
 			local word = wall_config.wallpaper_schedule[time]
@@ -233,7 +233,7 @@ else --Schedule is list of keywords
 	-- Get any pictures that match keywords
 	local pictures = filter_files_by_format(get_dir_contents(wall_config.wall_dir), wall_config.valid_picture_formats)
 	pictures = find_files_containing_keywords(pictures, keywords)
-	
+
 	-- Order files by keyword (if a file was found for the keyword)
 	local ordered_pictures = {}
 	for _, word in ipairs(keywords) do
@@ -326,7 +326,7 @@ local manage_timer = function()
 
 	-- Update Wallpaper
 	update_wallpaper(wall_config.wallpaper_schedule[previous_time])
-	
+
 	-- Get the time difference to set as timeout for the wall_updater timer below
 	the_countdown = time_diff(next_time, current_time())
 
