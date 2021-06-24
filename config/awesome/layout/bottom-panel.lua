@@ -7,7 +7,6 @@ local dpi = beautiful.xresources.apply_dpi
 local clickable_container = require('widget.clickable-container')
 local task_list = require('widget.task-list')
 local tag_list = require('widget.tag-list')
-
 local bottom_panel = function(s)
 
 	local panel = wibox {
@@ -81,7 +80,7 @@ local bottom_panel = function(s)
 	local layout_box 		= build_widget(require('widget.layoutbox')(s))
 	s.battery     			= build_widget(require('widget.battery')())
 	s.info_center_toggle	= build_widget(require('widget.info-center-toggle')())
-
+	s.microphone_toggle = build_widget(require('widget.microphone-toggle')())
 	panel : setup {
 		{
 			layout = wibox.layout.align.horizontal,
@@ -106,6 +105,7 @@ local bottom_panel = function(s)
 				s.tray_toggler,
 				s.updater,
 				s.screen_rec,
+				s.microphone_toggle,
 				s.network,
 				s.bluetooth,
 				s.battery,
