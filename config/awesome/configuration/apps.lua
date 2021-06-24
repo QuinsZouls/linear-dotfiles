@@ -22,9 +22,9 @@ return {
 		-- Default sandbox
 		sandbox = 'virtualbox',
 		-- Default IDE
-		development = '',
+		development = 'code',
 		-- Default network manager
-		network_manager = 'kitty iwctl',
+		network_manager = 'nm-connection-editor',
 		-- Default bluetooth manager
 		bluetooth_manager = 'blueman-manager',
 		-- Default power manager
